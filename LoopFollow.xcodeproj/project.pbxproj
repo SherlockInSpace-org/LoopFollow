@@ -1577,6 +1577,7 @@
 				FC3AE7B3249E8E0E00AAE1E0 /* LoopFollow.xcdatamodeld */,
 				FC5A5C3C2497B229009C550E /* Config.xcconfig */,
 				FC8DEEE32485D1680075863F /* LoopFollow */,
+				AA0F00030000000000000001 /* LoopFollowLiveActivity */,
 				DDCC3AD72DDE1790006F1C10 /* Tests */,
 				FC9788152485969B00A7906C /* Products */,
 				8E32230C453C93FDCE59C2B9 /* Pods */,
@@ -1589,6 +1590,7 @@
 			children = (
 				FC9788142485969B00A7906C /* Loop Follow.app */,
 				DDCC3AD62DDE1790006F1C10 /* Tests.xctest */,
+				AA0F00010000000000000001 /* LoopFollowLiveActivity.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
