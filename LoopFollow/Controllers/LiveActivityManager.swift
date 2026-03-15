@@ -74,6 +74,15 @@ class LiveActivityManager {
             // no signal for when the reading is too old to display.
             // staleDate = reading timestamp + 6 minutes (one missed poll interval).
             Task {
+                // End any orphaned duplicate activities that we no longer own. These can
+                // accumulate when the app is killed and relaunched repeatedly — each launch
+                // previously called Activity.request() without checking whether an activity
+                // already existed, leaving stale entries in Activity.activities that are
+                // still rendered on the Lock Screen. Removing them keeps the display clean.
+                for orphan in Activity<LiveActivityAttributes>.activities where orphan.id != current.id {
+                    await orphan.end(nil, dismissalPolicy: .immediate)
+                }
+
                 let content = ActivityContent(
                     state: contentState,
                     staleDate: contentState.date.addingTimeInterval(6 * 60)
