@@ -16,7 +16,14 @@ class LiveActivityManager {
     /// The currently running activity, if any.
     private var activity: Activity<LiveActivityAttributes>?
 
-    private init() {}
+    private init() {
+        // Recover any activity that was started before this process instance launched
+        // (e.g. after iOS suspends and later resumes the app). Without this, the
+        // existing activity on the Lock Screen becomes orphaned — still visible but
+        // never updated again — because `activity` is nil and every call to `update()`
+        // creates a brand-new activity instead of updating the existing one.
+        activity = Activity<LiveActivityAttributes>.activities.first
+    }
 
     // MARK: - Public API
 
