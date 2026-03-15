@@ -416,6 +416,8 @@
 		AA0F00020000000000000011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000012 /* Assets.xcassets */; };
 		AA0F00020000000000000012 /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000002 /* LiveActivityAttributes.swift */; };
 		AA0F00020000000000000013 /* LoopFollowLiveActivity.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000001 /* LoopFollowLiveActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AA0F00160000000000000001 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00150000000000000001 /* LiveActivityManager.swift */; };
+		AA0F00160000000000000002 /* LiveActivitySettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00150000000000000002 /* LiveActivitySettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -847,6 +849,8 @@
 		FCFEEC9F2488157B00402A7F /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		FCFEECA1248857A600402A7F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA0F00010000000000000001 /* LoopFollowLiveActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LoopFollowLiveActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0F00150000000000000001 /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
+		AA0F00150000000000000002 /* LiveActivitySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySettingsView.swift; sourceTree = "<group>"; };
 		AA0F00010000000000000002 /* LiveActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityAttributes.swift; sourceTree = "<group>"; };
 		AA0F00010000000000000003 /* LiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivity.swift; sourceTree = "<group>"; };
 		AA0F00010000000000000004 /* LiveActivity+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveActivity+Helper.swift"; sourceTree = "<group>"; };
@@ -928,6 +932,7 @@
 				6589CC5E2E9E7D1600BB18FE /* GraphSettingsView.swift */,
 				6589CC5F2E9E7D1600BB18FE /* SettingsMenuView.swift */,
 				6589CC602E9E7D1600BB18FE /* TabCustomizationModal.swift */,
+				AA0F00150000000000000002 /* LiveActivitySettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1403,6 +1408,7 @@
 				FCA2DDE52501095000254A8C /* Timers.swift */,
 				DD608A0B2C27415C00F91132 /* BackgroundAlertManager.swift */,
 				65E8A2852E44B0300065037B /* VolumeButtonHandler.swift */,
+				AA0F00150000000000000001 /* LiveActivityManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2059,6 +2065,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA0F00020000000000000012 /* LiveActivityAttributes.swift in Sources */,
+				AA0F00160000000000000001 /* LiveActivityManager.swift in Sources */,
+				AA0F00160000000000000002 /* LiveActivitySettingsView.swift in Sources */,
 				DD5334292C6166A500062F9D /* InfoDisplaySettingsView.swift in Sources */,
 				DD48781E2C7DAF2F0048F05C /* PushNotificationManager.swift in Sources */,
 				DD0B9D582DE1F3B20090C337 /* AlarmType+canAcknowledge.swift in Sources */,
