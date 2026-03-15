@@ -273,6 +273,16 @@ extension MainViewController {
                         stale: Observable.shared.bgStale.value
                     )
             }
+
+            // Update Live Activity
+            if #available(iOS 16.1, *), Storage.shared.liveActivityEnabled.value {
+                LiveActivityManager.shared.update(
+                    bgData: self.bgData,
+                    iob: self.latestIOB?.value,
+                    cob: self.latestCOB?.value
+                )
+            }
+
             Storage.shared.lastBGChecked.value = Date()
         }
     }
