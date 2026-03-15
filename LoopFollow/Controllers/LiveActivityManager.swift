@@ -9,7 +9,7 @@ import Foundation
 /// Call `update(bgData:iob:cob:)` after each BG reading is processed.
 /// The manager starts a new activity automatically if none is running.
 /// Call `end()` when the user disables Live Activities in settings.
-@available(iOS 16.1, *)
+@available(iOS 16.2, *)
 class LiveActivityManager {
     static let shared = LiveActivityManager()
 
@@ -43,8 +43,16 @@ class LiveActivityManager {
 
         if let current = activity, current.activityState != .ended, current.activityState != .dismissed {
             // Update the running activity.
+            // Use the ActivityContent API (iOS 16.2+) with an explicit staleDate so iOS
+            // knows when to mark the widget as stale. Without a staleDate the system has
+            // no signal for when the reading is too old to display.
+            // staleDate = reading timestamp + 6 minutes (one missed poll interval).
             Task {
-                await current.update(using: contentState)
+                let content = ActivityContent(
+                    state: contentState,
+                    staleDate: contentState.date.addingTimeInterval(6 * 60)
+                )
+                await current.update(content)
             }
         } else {
             // No live activity running — start a fresh one.

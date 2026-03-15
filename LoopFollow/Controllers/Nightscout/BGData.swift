@@ -275,7 +275,7 @@ extension MainViewController {
             }
 
             // Update Live Activity
-            if #available(iOS 16.1, *), Storage.shared.liveActivityEnabled.value {
+            if #available(iOS 16.2, *), Storage.shared.liveActivityEnabled.value {
                 LiveActivityManager.shared.update(
                     bgData: self.bgData,
                     iob: self.latestIOB?.value,
