@@ -397,6 +397,25 @@
 		FCFEEC9E2486E68E00402A7F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCFEEC9D2486E68E00402A7F /* WebKit.framework */; };
 		FCFEECA02488157B00402A7F /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFEEC9F2488157B00402A7F /* Chart.swift */; };
 		FCFEECA2248857A600402A7F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCFEECA1248857A600402A7F /* SettingsViewController.swift */; };
+		AA0F00020000000000000001 /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000002 /* LiveActivityAttributes.swift */; };
+		AA0F00020000000000000002 /* LiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000003 /* LiveActivity.swift */; };
+		AA0F00020000000000000003 /* LiveActivity+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000004 /* LiveActivity+Helper.swift */; };
+		AA0F00020000000000000004 /* LiveActivityBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000005 /* LiveActivityBundle.swift */; };
+		AA0F00020000000000000005 /* LiveActivityWidgetBobble.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000006 /* LiveActivityWidgetBobble.swift */; };
+		AA0F00020000000000000006 /* LiveActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000007 /* LiveActivityView.swift */; };
+		AA0F00020000000000000007 /* LiveActivityBGAndTrendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000008 /* LiveActivityBGAndTrendView.swift */; };
+		AA0F00020000000000000008 /* LiveActivityChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000009 /* LiveActivityChartView.swift */; };
+		AA0F00020000000000000009 /* LiveActivityGlucoseDeltaLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F0001000000000000000A /* LiveActivityGlucoseDeltaLabelView.swift */; };
+		AA0F0002000000000000000A /* LiveActivityBGLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F0001000000000000000B /* LiveActivityBGLabelView.swift */; };
+		AA0F0002000000000000000B /* LiveActivityBGLabelLargeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F0001000000000000000C /* LiveActivityBGLabelLargeView.swift */; };
+		AA0F0002000000000000000C /* LiveActivityBGLabelWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F0001000000000000000D /* LiveActivityBGLabelWatchView.swift */; };
+		AA0F0002000000000000000D /* LiveActivityIOBLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F0001000000000000000E /* LiveActivityIOBLabelView.swift */; };
+		AA0F0002000000000000000E /* LiveActivityCOBLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F0001000000000000000F /* LiveActivityCOBLabelView.swift */; };
+		AA0F0002000000000000000F /* LiveActivityTotalDailyDoseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000010 /* LiveActivityTotalDailyDoseView.swift */; };
+		AA0F00020000000000000010 /* LiveActivityUpdatedLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000011 /* LiveActivityUpdatedLabelView.swift */; };
+		AA0F00020000000000000011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000012 /* Assets.xcassets */; };
+		AA0F00020000000000000012 /* LiveActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000002 /* LiveActivityAttributes.swift */; };
+		AA0F00020000000000000013 /* LoopFollowLiveActivity.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AA0F00010000000000000001 /* LoopFollowLiveActivity.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -407,7 +426,27 @@
 			remoteGlobalIDString = FC9788132485969B00A7906C;
 			remoteInfo = LoopFollow;
 		};
+		AA0F00070000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FC97880C2485969B00A7906C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA0F00090000000000000001;
+			remoteInfo = LoopFollowLiveActivity;
+		};
 /* End PBXContainerItemProxy section */
+/* Begin PBXCopyFilesBuildPhase section */
+		AA0F00040000000000000004 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA0F00020000000000000013 /* LoopFollowLiveActivity.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		059B0FA59AABFE72FE13DDDA /* Pods-LoopFollow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopFollow.release.xcconfig"; path = "Target Support Files/Pods-LoopFollow/Pods-LoopFollow.release.xcconfig"; sourceTree = "<group>"; };
@@ -807,6 +846,26 @@
 		FCFEEC9D2486E68E00402A7F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		FCFEEC9F2488157B00402A7F /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		FCFEECA1248857A600402A7F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000001 /* LoopFollowLiveActivity.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LoopFollowLiveActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA0F00010000000000000002 /* LiveActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityAttributes.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000003 /* LiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivity.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000004 /* LiveActivity+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LiveActivity+Helper.swift"; sourceTree = "<group>"; };
+		AA0F00010000000000000005 /* LiveActivityBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityBundle.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000006 /* LiveActivityWidgetBobble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityWidgetBobble.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000007 /* LiveActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityView.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000008 /* LiveActivityBGAndTrendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityBGAndTrendView.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000009 /* LiveActivityChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityChartView.swift; sourceTree = "<group>"; };
+		AA0F0001000000000000000A /* LiveActivityGlucoseDeltaLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityGlucoseDeltaLabelView.swift; sourceTree = "<group>"; };
+		AA0F0001000000000000000B /* LiveActivityBGLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityBGLabelView.swift; sourceTree = "<group>"; };
+		AA0F0001000000000000000C /* LiveActivityBGLabelLargeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityBGLabelLargeView.swift; sourceTree = "<group>"; };
+		AA0F0001000000000000000D /* LiveActivityBGLabelWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityBGLabelWatchView.swift; sourceTree = "<group>"; };
+		AA0F0001000000000000000E /* LiveActivityIOBLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityIOBLabelView.swift; sourceTree = "<group>"; };
+		AA0F0001000000000000000F /* LiveActivityCOBLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityCOBLabelView.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000010 /* LiveActivityTotalDailyDoseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityTotalDailyDoseView.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000011 /* LiveActivityUpdatedLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityUpdatedLabelView.swift; sourceTree = "<group>"; };
+		AA0F00010000000000000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AA0F00010000000000000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA0F00010000000000000014 /* LoopFollowLiveActivity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoopFollowLiveActivity.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -829,6 +888,13 @@
 				DD485F162E46631000CE8CBF /* CryptoSwift in Frameworks */,
 				3F1335F351590E573D8E6962 /* Pods_LoopFollow.framework in Frameworks */,
 				DD48781C2C7DAF140048F05C /* SwiftJWT in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA0F00040000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1591,6 +1657,48 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		AA0F00030000000000000003 /* WidgetItems */ = {
+			isa = PBXGroup;
+			children = (
+				AA0F0001000000000000000B /* LiveActivityBGLabelView.swift */,
+				AA0F0001000000000000000C /* LiveActivityBGLabelLargeView.swift */,
+				AA0F0001000000000000000D /* LiveActivityBGLabelWatchView.swift */,
+				AA0F0001000000000000000E /* LiveActivityIOBLabelView.swift */,
+				AA0F0001000000000000000F /* LiveActivityCOBLabelView.swift */,
+				AA0F00010000000000000010 /* LiveActivityTotalDailyDoseView.swift */,
+				AA0F00010000000000000011 /* LiveActivityUpdatedLabelView.swift */,
+			);
+			path = WidgetItems;
+			sourceTree = "<group>";
+		};
+		AA0F00030000000000000002 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AA0F00030000000000000003 /* WidgetItems */,
+				AA0F00010000000000000007 /* LiveActivityView.swift */,
+				AA0F00010000000000000008 /* LiveActivityBGAndTrendView.swift */,
+				AA0F00010000000000000009 /* LiveActivityChartView.swift */,
+				AA0F0001000000000000000A /* LiveActivityGlucoseDeltaLabelView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA0F00030000000000000001 /* LoopFollowLiveActivity */ = {
+			isa = PBXGroup;
+			children = (
+				AA0F00030000000000000002 /* Views */,
+				AA0F00010000000000000002 /* LiveActivityAttributes.swift */,
+				AA0F00010000000000000003 /* LiveActivity.swift */,
+				AA0F00010000000000000004 /* LiveActivity+Helper.swift */,
+				AA0F00010000000000000005 /* LiveActivityBundle.swift */,
+				AA0F00010000000000000006 /* LiveActivityWidgetBobble.swift */,
+				AA0F00010000000000000012 /* Assets.xcassets */,
+				AA0F00010000000000000013 /* Info.plist */,
+				AA0F00010000000000000014 /* LoopFollowLiveActivity.entitlements */,
+			);
+			path = LoopFollowLiveActivity;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1627,11 +1735,13 @@
 				FC9788112485969B00A7906C /* Frameworks */,
 				FC9788122485969B00A7906C /* Resources */,
 				04DA71CCA0280FA5FA2DF7A6 /* [CP] Embed Pods Frameworks */,
+				AA0F00040000000000000004 /* Embed App Extensions */,
 				DDB0AF532BB1AA0900AFA48B /* Capture Build Details */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				AA0F00080000000000000001 /* PBXTargetDependency */,
 			);
 			name = LoopFollow;
 			packageProductDependencies = (
@@ -1641,6 +1751,23 @@
 			productName = LoopFollow;
 			productReference = FC9788142485969B00A7906C /* Loop Follow.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AA0F00090000000000000001 /* LoopFollowLiveActivity */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA0F00060000000000000001 /* Build configuration list for PBXNativeTarget "LoopFollowLiveActivity" */;
+			buildPhases = (
+				AA0F00040000000000000001 /* Sources */,
+				AA0F00040000000000000002 /* Frameworks */,
+				AA0F00040000000000000003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoopFollowLiveActivity;
+			productName = LoopFollowLiveActivity;
+			productReference = AA0F00010000000000000001 /* LoopFollowLiveActivity.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1681,6 +1808,7 @@
 			targets = (
 				FC9788132485969B00A7906C /* LoopFollow */,
 				DDCC3AD52DDE1790006F1C10 /* Tests */,
+				AA0F00090000000000000001 /* LoopFollowLiveActivity */,
 			);
 		};
 /* End PBXProject section */
@@ -1823,6 +1951,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA0F00040000000000000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0F00020000000000000011 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1920,6 +2056,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0F00020000000000000012 /* LiveActivityAttributes.swift in Sources */,
 				DD5334292C6166A500062F9D /* InfoDisplaySettingsView.swift in Sources */,
 				DD48781E2C7DAF2F0048F05C /* PushNotificationManager.swift in Sources */,
 				DD0B9D582DE1F3B20090C337 /* AlarmType+canAcknowledge.swift in Sources */,
@@ -2186,6 +2323,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AA0F00040000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA0F00020000000000000001 /* LiveActivityAttributes.swift in Sources */,
+				AA0F00020000000000000002 /* LiveActivity.swift in Sources */,
+				AA0F00020000000000000003 /* LiveActivity+Helper.swift in Sources */,
+				AA0F00020000000000000004 /* LiveActivityBundle.swift in Sources */,
+				AA0F00020000000000000005 /* LiveActivityWidgetBobble.swift in Sources */,
+				AA0F00020000000000000006 /* LiveActivityView.swift in Sources */,
+				AA0F00020000000000000007 /* LiveActivityBGAndTrendView.swift in Sources */,
+				AA0F00020000000000000008 /* LiveActivityChartView.swift in Sources */,
+				AA0F00020000000000000009 /* LiveActivityGlucoseDeltaLabelView.swift in Sources */,
+				AA0F0002000000000000000A /* LiveActivityBGLabelView.swift in Sources */,
+				AA0F0002000000000000000B /* LiveActivityBGLabelLargeView.swift in Sources */,
+				AA0F0002000000000000000C /* LiveActivityBGLabelWatchView.swift in Sources */,
+				AA0F0002000000000000000D /* LiveActivityIOBLabelView.swift in Sources */,
+				AA0F0002000000000000000E /* LiveActivityCOBLabelView.swift in Sources */,
+				AA0F0002000000000000000F /* LiveActivityTotalDailyDoseView.swift in Sources */,
+				AA0F00020000000000000010 /* LiveActivityUpdatedLabelView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2193,6 +2353,11 @@
 			isa = PBXTargetDependency;
 			target = FC9788132485969B00A7906C /* LoopFollow */;
 			targetProxy = DDCC3ADA2DDE1790006F1C10 /* PBXContainerItemProxy */;
+		};
+		AA0F00080000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA0F00090000000000000001 /* LoopFollowLiveActivity */;
+			targetProxy = AA0F00070000000000000001 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2435,6 +2600,52 @@
 			};
 			name = Release;
 		};
+		AA0F00050000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "LoopFollowLiveActivity/LoopFollowLiveActivity.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "$(LF_DEVELOPMENT_TEAM)";
+				INFOPLIST_FILE = "LoopFollowLiveActivity/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.$(unique_id).LoopFollow$(app_suffix).LiveActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA0F00050000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = "LoopFollowLiveActivity/LoopFollowLiveActivity.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "$(LF_DEVELOPMENT_TEAM)";
+				INFOPLIST_FILE = "LoopFollowLiveActivity/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.$(unique_id).LoopFollow$(app_suffix).LiveActivity";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2461,6 +2672,15 @@
 			buildConfigurations = (
 				FC97882E2485969C00A7906C /* Debug */,
 				FC97882F2485969C00A7906C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA0F00060000000000000001 /* Build configuration list for PBXNativeTarget "LoopFollowLiveActivity" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0F00050000000000000001 /* Debug */,
+				AA0F00050000000000000002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
