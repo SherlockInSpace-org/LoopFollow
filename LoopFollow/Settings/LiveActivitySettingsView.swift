@@ -32,7 +32,7 @@ struct LiveActivitySettingsView: View {
 
                 // ───────── Display options (visible only when enabled) ─────────
                 if liveActivityEnabled.value {
-                    Section("Display") {
+                    Section {
                         Toggle("Detailed View", isOn: $liveActivityDetailedView.value)
 
                         Picker("Color Scheme", selection: $liveActivityColorScheme.value) {
@@ -40,6 +40,8 @@ struct LiveActivitySettingsView: View {
                             Text("Dynamic").tag("dynamicColor")
                         }
                         .pickerStyle(.segmented)
+                    } header: {
+                        Text("Display")
                     } footer: {
                         Text(
                             "Detailed View adds a glucose trend chart plus IOB and COB. " +
