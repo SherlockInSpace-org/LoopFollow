@@ -67,7 +67,10 @@ class LiveActivityManager {
 
         let contentState = buildContentState(bgData: bgData, iob: iob, cob: cob)
 
-        if let current = activity, current.activityState != .ended, current.activityState != .dismissed {
+        if let current = activity,
+           current.activityState != .ended,
+           current.activityState != .dismissed,
+           current.activityState != .stale {
             // Update the running activity.
             // Use the ActivityContent API (iOS 16.2+) with an explicit staleDate so iOS
             // knows when to mark the widget as stale. Without a staleDate the system has
