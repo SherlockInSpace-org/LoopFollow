@@ -149,19 +149,74 @@ class LiveActivityManager {
             }
         }
 
+        // iOS renders the initial ContentState that is passed to `Activity.request`
+        // synchronously before the app has a chance to push its first update. If that
+        // first state has real BG values the widget appears correctly, but Trio found
+        // that the activity can silently fail to appear on the Lock Screen when the
+        // widget's layout code receives "stale-looking" data (e.g. a timestamp that is
+        // already several minutes old) before it has ever been shown. Passing
+        // `isInitialState: true` triggers a dedicated loading/placeholder branch in
+        // the widget views, avoiding that edge case.  We then immediately push the
+        // real state so the transition to live data is nearly instantaneous.
+        let placeholder = buildPlaceholderContentState()
         let attributes = LiveActivityAttributes(startDate: Date())
         do {
             let newActivity = try Activity<LiveActivityAttributes>.request(
                 attributes: attributes,
-                contentState: contentState,
+                contentState: placeholder,
                 pushType: nil
             )
             activity = newActivity
             activityStartDate = Date()
+
+            // Push real content right away so the placeholder flash is imperceptible.
+            Task {
+                let content = ActivityContent(
+                    state: contentState,
+                    staleDate: contentState.date.addingTimeInterval(6 * 60)
+                )
+                await newActivity.update(content)
+            }
         } catch {
             // Activity request failed — silently ignore (e.g. simulator, low-power mode).
             activityStartDate = nil
         }
+    }
+
+    /// Returns a minimal ContentState with `isInitialState: true` that is used as
+    /// the very first state pushed to a newly created activity. The widget views
+    /// render a placeholder/loading appearance for this state, sidestepping an
+    /// edge case where passing real-but-old data on `Activity.request` can cause
+    /// the Lock Screen widget to silently fail to appear.
+    private func buildPlaceholderContentState() -> LiveActivityAttributes.ContentState {
+        let emptyAdditional = LiveActivityAttributes.ContentAdditionalState(
+            chart: [],
+            rotationDegrees: 0,
+            cob: 0,
+            iob: 0,
+            tdd: 0,
+            isOverrideActive: false,
+            overrideName: "",
+            overrideDate: Date(),
+            overrideDuration: 0,
+            overrideTarget: 0,
+            widgetItems: LiveActivityAttributes.LiveActivityItem.defaultItems
+        )
+        return LiveActivityAttributes.ContentState(
+            unit: Storage.shared.units.value,
+            bg: "--",
+            direction: nil,
+            change: "",
+            date: Date(),
+            highGlucose: Decimal(Storage.shared.highLine.value),
+            lowGlucose: Decimal(Storage.shared.lowLine.value),
+            target: Decimal(100),
+            glucoseColorScheme: Storage.shared.liveActivityColorScheme.value,
+            useDetailedViewIOS: Storage.shared.liveActivityDetailedView.value,
+            useDetailedViewWatchOS: Storage.shared.liveActivityDetailedView.value,
+            detailedViewState: emptyAdditional,
+            isInitialState: true
+        )
     }
 
     /// Build a ContentState from the current app state and the supplied BG data.
