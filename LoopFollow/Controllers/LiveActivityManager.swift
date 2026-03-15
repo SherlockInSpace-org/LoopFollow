@@ -3,6 +3,7 @@
 
 import ActivityKit
 import Foundation
+import UIKit
 
 /// Manages the lifecycle (start / update / end) of the LoopFollow Live Activity.
 ///
@@ -16,6 +17,11 @@ class LiveActivityManager {
     /// The currently running activity, if any.
     private var activity: Activity<LiveActivityAttributes>?
 
+    /// Last-seen BG data, cached so app-transition force-updates can replay them.
+    private var lastBGData: [ShareGlucoseData] = []
+    private var lastIOB: Double?
+    private var lastCOB: Double?
+
     private init() {
         // Recover any activity that was started before this process instance launched
         // (e.g. after iOS suspends and later resumes the app). Without this, the
@@ -23,6 +29,21 @@ class LiveActivityManager {
         // never updated again — because `activity` is nil and every call to `update()`
         // creates a brand-new activity instead of updating the existing one.
         activity = Activity<LiveActivityAttributes>.activities.first
+
+        // Force a widget refresh at app-lifecycle boundaries so the Lock Screen
+        // always shows fresh data when the user picks up their phone.
+        // Mirrors Trio's LiveActivityBridge behaviour.
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didEnterBackgroundNotification,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in self?.forceUpdate() }
+
+        NotificationCenter.default.addObserver(
+            forName: UIApplication.didBecomeActiveNotification,
+            object: nil,
+            queue: nil
+        ) { [weak self] _ in self?.forceUpdate() }
     }
 
     // MARK: - Public API
@@ -38,6 +59,11 @@ class LiveActivityManager {
     ///   - cob: Carbs on board in grams, or nil if unavailable.
     func update(bgData: [ShareGlucoseData], iob: Double?, cob: Double?) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
+
+        // Cache for replaying on app-transition force-updates.
+        lastBGData = bgData
+        lastIOB = iob
+        lastCOB = cob
 
         let contentState = buildContentState(bgData: bgData, iob: iob, cob: cob)
 
@@ -70,6 +96,16 @@ class LiveActivityManager {
     }
 
     // MARK: - Private helpers
+
+    /// Replay the last known BG state into the widget.
+    ///
+    /// Called at app-lifecycle boundaries (background / foreground) so the Lock
+    /// Screen is refreshed at the moment the user is most likely to look at it,
+    /// rather than waiting for the next poll cycle.
+    private func forceUpdate() {
+        guard !lastBGData.isEmpty else { return }
+        update(bgData: lastBGData, iob: lastIOB, cob: lastCOB)
+    }
 
     private func start(with contentState: LiveActivityAttributes.ContentState) {
         let attributes = LiveActivityAttributes(startDate: Date())
