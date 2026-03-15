@@ -19,7 +19,7 @@ struct LiveActivityUpdatedLabelView: View {
     }
 
     var body: some View {
-        let dateText = Text("\((context.state.date != nil) ? dateFormatter.string(from: context.state.date!) : "--")")
+        let dateText = Text(dateFormatter.string(from: context.state.date))
 
         if isWatchOS {
             dateText

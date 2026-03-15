@@ -61,7 +61,7 @@ struct LiveActivityBGLabelWatchView: View {
 
             Spacer()
 
-            Text("\((context.state.date != nil) ? dateFormatter.string(from: context.state.date!) : "--")")
+            Text(dateFormatter.string(from: context.state.date))
                 .font(.callout)
                 .foregroundStyle(context.isStale ? .red.opacity(0.6) : .primary)
                 .strikethrough(context.isStale, pattern: .solid, color: .red.opacity(0.6))
