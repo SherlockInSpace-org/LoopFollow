@@ -17,6 +17,11 @@ class LiveActivityManager {
     /// The currently running activity, if any.
     private var activity: Activity<LiveActivityAttributes>?
 
+    /// The time at which the current activity was started. Used to enforce
+    /// a periodic recreation threshold so we never approach the 8-hour system
+    /// expiry wall and lose the widget unexpectedly.
+    private var activityStartDate: Date?
+
     /// Last-seen BG data, cached so app-transition force-updates can replay them.
     private var lastBGData: [ShareGlucoseData] = []
     private var lastIOB: Double?
@@ -29,6 +34,9 @@ class LiveActivityManager {
         // never updated again — because `activity` is nil and every call to `update()`
         // creates a brand-new activity instead of updating the existing one.
         activity = Activity<LiveActivityAttributes>.activities.first
+        // Best-effort: treat the oldest known start date as the activity start so
+        // the 1-hour recreation timer is approximately correct after process restart.
+        activityStartDate = activity != nil ? Date() : nil
 
         // Force a widget refresh at app-lifecycle boundaries so the Lock Screen
         // always shows fresh data when the user picks up their phone.
@@ -67,10 +75,22 @@ class LiveActivityManager {
 
         let contentState = buildContentState(bgData: bgData, iob: iob, cob: cob)
 
+        // Recreate the activity after 1 hour to avoid silently approaching the
+        // 8-hour system-imposed maximum lifetime. iOS does not warn the app before
+        // killing a long-running activity; by recycling proactively we guarantee
+        // at least 7 more hours of headroom at every recreation point.
+        let needsRecreation: Bool
+        if let startDate = activityStartDate {
+            needsRecreation = Date().timeIntervalSince(startDate) >= 60 * 60
+        } else {
+            needsRecreation = false
+        }
+
         if let current = activity,
            current.activityState != .ended,
            current.activityState != .dismissed,
-           current.activityState != .stale {
+           current.activityState != .stale,
+           !needsRecreation {
             // Update the running activity.
             // Use the ActivityContent API (iOS 16.2+) with an explicit staleDate so iOS
             // knows when to mark the widget as stale. Without a staleDate the system has
@@ -105,6 +125,7 @@ class LiveActivityManager {
             await current.end(using: nil, dismissalPolicy: .immediate)
         }
         activity = nil
+        activityStartDate = nil
     }
 
     // MARK: - Private helpers
@@ -120,6 +141,14 @@ class LiveActivityManager {
     }
 
     private func start(with contentState: LiveActivityAttributes.ContentState) {
+        // End the old activity (if any) before starting a replacement so it
+        // does not linger as an orphan on the Lock Screen.
+        Task {
+            if let old = activity {
+                await old.end(nil, dismissalPolicy: .immediate)
+            }
+        }
+
         let attributes = LiveActivityAttributes(startDate: Date())
         do {
             let newActivity = try Activity<LiveActivityAttributes>.request(
@@ -128,8 +157,10 @@ class LiveActivityManager {
                 pushType: nil
             )
             activity = newActivity
+            activityStartDate = Date()
         } catch {
             // Activity request failed — silently ignore (e.g. simulator, low-power mode).
+            activityStartDate = nil
         }
     }
 
