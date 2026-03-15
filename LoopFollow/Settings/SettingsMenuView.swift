@@ -92,6 +92,12 @@ struct SettingsMenuView: View {
 
                 // ───────── Integrations ─────────
                 Section("Integrations") {
+                    NavigationRow(title: "Live Activity",
+                                  icon: "lock.iphone")
+                    {
+                        settingsPath.value.append(Sheet.liveActivity)
+                    }
+
                     NavigationRow(title: "Calendar",
                                   icon: "calendar")
                     {
@@ -280,6 +286,7 @@ private enum Sheet: Hashable, Identifiable {
     case alarmsList, alarmSettings
     case remote
     case importExport
+    case liveActivity
     case calendar, contact
     case advanced
     case viewLog
@@ -299,6 +306,7 @@ private enum Sheet: Hashable, Identifiable {
         case .alarmSettings: AlarmSettingsView()
         case .remote: RemoteSettingsView(viewModel: .init())
         case .importExport: ImportExportSettingsView()
+        case .liveActivity: LiveActivitySettingsView()
         case .calendar: CalendarSettingsView()
         case .contact: ContactSettingsView(viewModel: .init())
         case .advanced: AdvancedSettingsView(viewModel: .init())

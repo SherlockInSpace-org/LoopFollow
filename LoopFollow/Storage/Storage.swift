@@ -57,6 +57,12 @@ class Storage {
     var lastCOBNotified = StorageValue<Double?>(key: "lastCOBNotified", defaultValue: nil)
     var lastMissedBolusNotified = StorageValue<Date?>(key: "lastMissedBolusNotified", defaultValue: nil)
 
+    // Live Activity [BEGIN]
+    var liveActivityEnabled = StorageValue<Bool>(key: "liveActivityEnabled", defaultValue: false)
+    var liveActivityDetailedView = StorageValue<Bool>(key: "liveActivityDetailedView", defaultValue: false)
+    var liveActivityColorScheme = StorageValue<String>(key: "liveActivityColorScheme", defaultValue: "staticColor")
+    // Live Activity [END]
+
     // General Settings [BEGIN]
     var appBadge = StorageValue<Bool>(key: "appBadge", defaultValue: true)
     var colorBGText = StorageValue<Bool>(key: "colorBGText", defaultValue: true)
